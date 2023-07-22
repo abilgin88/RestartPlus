@@ -8,16 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    // MARK: - PROPERTY
+
+    @AppStorage("onboarding") var isOnboardingViewActive = true
+    
+    // MARK: - PROPERTY
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            if isOnboardingViewActive {
+                OnboardingView()
+            } else {
+                HomeView()
+            }
         }
-        .padding()
     }
 }
+
+// MARK: - PREVIEW
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
